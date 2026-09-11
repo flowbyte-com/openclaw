@@ -70,7 +70,7 @@ describe("SQLite transcript archive byte limit", () => {
     expect(
       fs
         .readdirSync(path.dirname(storePath))
-        .filter((entry) => entry.includes(".stage") || entry.includes("jsonl-stage")),
+        .filter((entry) => entry.includes(".stg")),
     ).toEqual([]);
   });
 });
