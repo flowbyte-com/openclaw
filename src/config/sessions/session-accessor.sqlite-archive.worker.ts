@@ -279,7 +279,7 @@ async function encodeStagedTranscriptArchive(params: {
     sessionId: params.sessionId,
     nowMs: createdAt,
   })}${compressed ? ".zst" : ""}`;
-  const encodedPath = `${archivePath}.${randomUUID()}.stage`;
+  const encodedPath = `${archivePath}.${randomUUID().slice(0, 16)}.stg`;
   try {
     if (compressed) {
       await pipeline(
@@ -318,7 +318,7 @@ export async function materializeTranscriptArchiveInWorker(
     identityOwner: "registry",
     reason: plan.reason,
     sessionId: plan.sessionId,
-  })}.${randomUUID()}.jsonl-stage`;
+  })}.${randomUUID().slice(0, 16)}.stg`;
   try {
     const opened = withOpenClawAgentDatabaseReadOnly(
       (database) => {
